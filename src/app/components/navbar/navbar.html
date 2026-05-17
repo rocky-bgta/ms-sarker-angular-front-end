@@ -11,14 +11,14 @@
 
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/about" routerLinkActive="active">About</a></li>
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/products" routerLinkActive="active">Products</a></li>
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/projects" routerLinkActive="active">Projects</a></li>
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/clients" routerLinkActive="active">Clients</a></li>
-        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" data-bs-toggle="collapse" data-bs-target="#navMenu.show">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/about" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">About</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/products" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">Products</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/projects" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">Projects</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/clients" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">Clients</a></li>
+        <li class="nav-item"><a class="nav-link px-3 rounded" routerLink="/contact" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">Contact</a></li>
         <li class="nav-item ms-lg-2">
-          <a class="nav-link btn btn-outline-warning btn-sm px-3 py-2 text-warning" routerLink="/admin" routerLinkActive="active">
+          <a class="nav-link btn btn-outline-warning btn-sm px-3 py-2 text-warning" routerLink="/admin" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#navMenu.show">
             <i class="bi bi-gear-fill me-1"></i>Admin
           </a>
         </li>
