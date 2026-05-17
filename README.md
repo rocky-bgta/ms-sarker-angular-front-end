@@ -44,9 +44,9 @@ If you want to host it elsewhere (Netlify, Vercel, or your own server):
 
 1.  **Build the project**:
     ```bash
-    npm run build:legacy
+    npm run build
     ```
 2.  **Upload the files**:
-    The deployment-ready files are located in `dist/legacy/browser/`.
+    The deployment-ready files are located in `dist/ms-sarker/browser/`.
 3.  **Note**: The project is configured with `withHashLocation()`, so it works perfectly on static hosts without extra configuration.
 # deploy
