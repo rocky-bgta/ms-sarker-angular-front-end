@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:legacy": "ng build --output-path ./dist/legacy --output-hashing none --base-href ./ && node -e \"const fs=require('fs'); const p='dist/legacy/browser/index.html'; if(fs.existsSync(p)){fs.writeFileSync(p, fs.readFileSync(p, 'utf8').replace(/type=\\\"module\\\"/g, ''))}\"",
+    "build:legacy": "ng build --configuration=production --base-href /ms-sarker-angular-front-end/ --output-path=dist/legacy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
