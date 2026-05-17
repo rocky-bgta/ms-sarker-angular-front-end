@@ -30,8 +30,22 @@ Once the server is running, navigate to `http://localhost:4200/`.
 
 ## 🚀 Deployment
 
-To build the project for production:
+### Option 1: GitHub Pages (Automatic)
+The easiest way to deploy is using the included GitHub Actions workflow.
 
-```bash
-npm run build
-```
+1.  **Push your code** to GitHub.
+2.  Go to your repository on GitHub.
+3.  Navigate to **Settings** > **Pages**.
+4.  Under **Build and deployment** > **Source**, select **"GitHub Actions"**.
+5.  Your site will automatically build and deploy every time you push to the `main` branch.
+
+### Option 2: Manual Deployment
+If you want to host it elsewhere (Netlify, Vercel, or your own server):
+
+1.  **Build the project**:
+    ```bash
+    npm run build:legacy
+    ```
+2.  **Upload the files**:
+    The deployment-ready files are located in `dist/legacy/browser/`.
+3.  **Note**: The project is configured with `withHashLocation()`, so it works perfectly on static hosts without extra configuration.
