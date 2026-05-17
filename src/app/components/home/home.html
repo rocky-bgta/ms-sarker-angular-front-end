@@ -48,6 +48,14 @@
              style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
             <i class="bi bi-envelope-fill" style="color:#f5a623;"></i>{{ d.company.email }}
           </a>
+          <a *ngIf="d.company.facebook" [href]="d.company.facebook" target="_blank" class="text-decoration-none d-flex align-items-center gap-2"
+             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
+            <i class="bi bi-facebook" style="color:#f5a623;"></i>Facebook
+          </a>
+          <a *ngIf="d.company.youtube" [href]="d.company.youtube" target="_blank" class="text-decoration-none d-flex align-items-center gap-2"
+             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
+            <i class="bi bi-youtube" style="color:#f5a623;"></i>YouTube
+          </a>
         </div>
       </div>
 
@@ -74,7 +82,7 @@
             <div class="row g-3 mb-4">
               <div class="col-6" *ngFor="let c of [
                 {icon:'bi-lightning-fill',     label:'Lightning Protection', sub:'ESE · 107m Radius',   color:'#f5a623'},
-                {icon:'bi-sun-fill',           label:'Solar Energy',         sub:'5KW – 70KW+ Systems', color:'#f5a623'},
+                {icon:'bi-sun-fill',           label:'Solar Energy',         sub:'4KW – 100KW+ Systems', color:'#f5a623'},
                 {icon:'bi-shield-fill-check',  label:'Surge Protection',     sub:'SPD · AC & DC',       color:'#f5a623'},
                 {icon:'bi-wifi',               label:'IoT Monitoring',       sub:'Real-time · GPS',     color:'#25d366'}
               ]">

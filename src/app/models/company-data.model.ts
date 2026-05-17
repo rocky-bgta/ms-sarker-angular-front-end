@@ -8,6 +8,8 @@ export interface CompanyInfo {
   phone2: string;
   email: string;
   address: string;
+  facebook?: string;
+  youtube?: string;
   ceo: string;
   mission: string;
   vision: string;
