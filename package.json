@@ -2,7 +2,7 @@
   "name": "ms-sarker",
   "version": "0.0.0",
   "scripts": {
-    "clean": "rimraf dist legacy",
+    "clean": "rimraf dist",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
