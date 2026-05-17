@@ -1,0 +1,39 @@
+<section class="page-hero-bs py-5">
+  <div class="container-xl position-relative" style="z-index:2;">
+    <h1 class="display-4 fw-bold text-white mb-2" style="font-family:'Oswald',sans-serif;letter-spacing:2px;">MAJOR <span class="text-warning">PROJECTS</span></h1>
+    <p class="text-secondary mb-0" style="letter-spacing:1px;max-width:600px;">A showcase of our successful installations and engineering milestones across Bangladesh.</p>
+  </div>
+</section>
+
+<div class="container-xl py-5">
+  <div class="table-responsive rounded-4 border border-secondary border-opacity-25 shadow-lg">
+    <table class="table table-dark table-hover mb-0 align-middle">
+      <thead class="bg-dark text-warning border-bottom border-warning border-opacity-25" style="font-family:'Oswald',sans-serif;letter-spacing:1px;font-size:0.9rem;">
+        <tr>
+          <th class="ps-4 py-3">YEAR</th>
+          <th class="py-3">PROJECT TITLE</th>
+          <th class="py-3">CATEGORY</th>
+          <th class="py-3">LOCATION</th>
+          <th class="py-3 text-center">IoT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of projects" class="border-secondary border-opacity-10">
+          <td class="ps-4 text-warning fw-bold">{{ p.year }}</td>
+          <td>
+            <div class="text-white fw-semibold">{{ p.title }}</div>
+            <div class="text-secondary small d-flex gap-2 mt-1">
+              <span>{{ p.brand }}</span>&middot;<span>{{ p.qty }}</span>
+            </div>
+          </td>
+          <td><span class="badge bg-secondary bg-opacity-25 text-white-50 border border-secondary border-opacity-25">{{ p.type }}</span></td>
+          <td class="text-secondary small">{{ p.location }}</td>
+          <td class="text-center">
+            <i *ngIf="p.iot" class="bi bi-broadcast text-success" title="IoT Enabled"></i>
+            <span *ngIf="!p.iot" class="text-muted small">—</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<section class="page-hero-bs py-5">
+  <div class="container-xl position-relative" style="z-index:2;">
+    <h1 class="display-4 fw-bold text-white mb-2" style="font-family:'Oswald',sans-serif;letter-spacing:2px;">GET IN <span class="text-warning">TOUCH</span></h1>
+    <p class="text-secondary mb-0" style="letter-spacing:1px;">Have a project in mind or need technical assistance? Contact us today.</p>
+  </div>
+</section>
+
+<div class="container-xl py-5">
+  <div class="row g-5">
+    <div class="col-lg-5">
+      <div class="d-flex flex-column gap-4">
+        <div class="d-flex gap-3 align-items-center">
+          <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+            <i class="bi bi-geo-alt-fill text-warning"></i>
+          </div>
+          <div>
+            <div class="text-white fw-bold small text-uppercase" style="letter-spacing:1px;">OFFICE ADDRESS</div>
+            <div class="text-secondary small">{{ c.address }}</div>
+          </div>
+        </div>
+        <div class="d-flex gap-3 align-items-center">
+          <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+            <i class="bi bi-telephone-fill text-warning"></i>
+          </div>
+          <div>
+            <div class="text-white fw-bold small text-uppercase" style="letter-spacing:1px;">PHONE NUMBERS</div>
+            <div class="text-secondary small">{{ c.phone1 }}<br>{{ c.phone2 }}</div>
+          </div>
+        </div>
+        <div class="d-flex gap-3 align-items-center">
+          <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+            <i class="bi bi-envelope-fill text-warning"></i>
+          </div>
+          <div>
+            <div class="text-white fw-bold small text-uppercase" style="letter-spacing:1px;">EMAIL INQUIRIES</div>
+            <div class="text-secondary small">{{ c.email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <form class="bg-dark p-4 p-lg-5 rounded-4 border border-secondary border-opacity-25" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label text-secondary small fw-bold">FULL NAME</label>
+            <input type="text" class="form-control bg-dark border-secondary border-opacity-25 text-white" placeholder="John Doe" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary small fw-bold">EMAIL ADDRESS</label>
+            <input type="email" class="form-control bg-dark border-secondary border-opacity-25 text-white" placeholder="john@example.com" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label text-secondary small fw-bold">SUBJECT</label>
+            <input type="text" class="form-control bg-dark border-secondary border-opacity-25 text-white" placeholder="Inquiry about Lightning Protection">
+          </div>
+          <div class="col-12">
+            <label class="form-label text-secondary small fw-bold">MESSAGE</label>
+            <textarea class="form-control bg-dark border-secondary border-opacity-25 text-white" rows="5" placeholder="How can we help you?"></textarea>
+          </div>
+          <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-warning w-100 fw-bold py-3">SEND MESSAGE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

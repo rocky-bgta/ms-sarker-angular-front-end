@@ -1,0 +1,32 @@
+<section class="page-hero-bs py-5">
+  <div class="container-xl position-relative" style="z-index:2;">
+    <h1 class="display-4 fw-bold text-white mb-2" style="font-family:'Oswald',sans-serif;letter-spacing:2px;">VALUED <span class="text-warning">CLIENTS</span></h1>
+    <p class="text-secondary mb-0" style="letter-spacing:1px;">We are proud to serve some of the most respected organizations in Bangladesh.</p>
+  </div>
+</section>
+
+<div class="container-xl py-5">
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-6 col-lg-4" *ngFor="let client of clients">
+      <div class="bg-dark p-4 rounded-4 border border-secondary border-opacity-25 d-flex align-items-center gap-3 card-hover">
+        <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+          <i class="bi bi-building text-warning"></i>
+        </div>
+        <div class="text-white fw-bold" style="letter-spacing:1px;">{{ client }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticker/Marquee for clients -->
+  <div class="mt-5 ticker-wrap overflow-hidden rounded-4 border border-warning border-opacity-10 bg-dark bg-opacity-50 py-4">
+    <div class="ticker-inner d-flex gap-5 align-items-center">
+      <div *ngFor="let client of clients" class="text-secondary fw-bold text-nowrap px-4" style="letter-spacing:3px;font-size:0.8rem;opacity:0.6;">
+        {{ client.toUpperCase() }}
+      </div>
+      <!-- Repeat for seamless loop -->
+      <div *ngFor="let client of clients" class="text-secondary fw-bold text-nowrap px-4" style="letter-spacing:3px;font-size:0.8rem;opacity:0.6;">
+        {{ client.toUpperCase() }}
+      </div>
+    </div>
+  </div>
+</div>
