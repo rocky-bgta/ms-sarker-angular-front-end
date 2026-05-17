@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:legacy": "ng build --output-path ./dist/legacy --output-hashing none --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
