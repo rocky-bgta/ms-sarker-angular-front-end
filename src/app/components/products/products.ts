@@ -12,10 +12,15 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  defaultSectionOrder: ('description' | 'brands' | 'specs')[] = ['description', 'brands', 'specs'];
 
   constructor(private dataService: CompanyDataService) {}
 
   ngOnInit(): void {
     this.products = this.dataService.getData().products;
+  }
+
+  getSectionOrder(product: Product): ('description' | 'brands' | 'specs')[] {
+    return product.sectionOrder || this.defaultSectionOrder;
   }
 }

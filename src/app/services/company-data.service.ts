@@ -49,16 +49,12 @@ export class CompanyDataService {
       {
         id: 'portable-power-station',
         category: 'Power Backup Solutions',
-        icon: '🔌',
+        icon: '📦',
         name: 'Portable Power Station',
         description:
           'Versatile and portable power solutions for outdoor, emergency, and off-grid use.',
         brands: ['LiFePO4 System'],
-        specs: [
-          'Power Range: 300watt to 1200watt',
-          'LiFePO4 Battery',
-          '12volt System',
-        ],
+        specs: ['Power Range: 300watt to 1200watt', 'LiFePO4 Battery', '12volt System'],
         tags: ['Portable Power', 'LiFePO4', 'Battery'],
       },
       {
@@ -99,7 +95,7 @@ export class CompanyDataService {
       {
         id: 'chemical-earthing',
         category: 'Lightning Protection & Earthing',
-        icon: '🔌',
+        icon: '⚡',
         name: 'Chemical Earthing System',
         description:
           'Maintenance-free chemical earthing electrodes providing low-resistance grounding essential for sensitive electrical equipment stability.',

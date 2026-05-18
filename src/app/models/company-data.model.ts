@@ -29,6 +29,7 @@ export interface Product {
   brands: string[];
   specs: string[];
   tags: string[];
+  sectionOrder?: ('description' | 'brands' | 'specs')[];
 }
 
 export interface Project {

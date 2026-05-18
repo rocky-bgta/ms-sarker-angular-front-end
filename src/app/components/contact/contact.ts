@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyDataService } from '../../services/company-data.service';
 import { CompanyInfo } from '../../models/company-data.model';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -13,6 +13,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   c!: CompanyInfo;
+  @ViewChild('contactForm') contactForm!: NgForm;
+
+  formData = {
+    fullName: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
+  submitted = false;
 
   constructor(private dataService: CompanyDataService) {}
 
@@ -20,7 +30,19 @@ export class ContactComponent implements OnInit {
     this.c = this.dataService.getData().company;
   }
 
+  isEmailValid(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   onSubmit() {
-    alert('Thank you for your message. We will get back to you soon!');
+    this.submitted = true;
+
+    if (this.contactForm.valid && this.isEmailValid(this.formData.email)) {
+      alert('Thank you for your message. We will get back to you soon!');
+      this.contactForm.resetForm();
+      this.formData = { fullName: '', email: '', subject: '', message: '' };
+      this.submitted = false;
+    }
   }
 }

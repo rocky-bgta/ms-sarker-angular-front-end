@@ -49,4 +49,85 @@ If you want to host it elsewhere (Netlify, Vercel, or your own server):
 2.  **Upload the files**:
     The deployment-ready files are located in `dist/ms-sarker/browser/`.
 3.  **Note**: The project is configured with `withHashLocation()`, so it works perfectly on static hosts without extra configuration.
+
+## 📦 Managing Products (Order & Icons)
+
+### Changing Product Order
+
+To change the order in which products appear on the **Products Page**, edit the `products` array in:
+```
+src/app/services/company-data.service.ts
+```
+
+**How it works:**
+- Products display in the same order as they appear in the array
+- The first product in the array appears first on the page
+- Simply rearrange the product objects to change display order
+
+**Example:**
+```typescript
+products: [
+  {
+    id: 'portable-power-station',  // This will appear FIRST
+    name: 'Portable Power Station',
+    // ...
+  },
+  {
+    id: 'ips-power',  // This will appear SECOND
+    name: 'Instant Power Supply (IPS)',
+    // ...
+  },
+]
+```
+
+### Changing Product Icons
+
+Each product has an `icon` property using **emoji**. To change or update icons:
+
+**File to edit:**
+```
+src/app/services/company-data.service.ts
+```
+
+**Example icon changes:**
+```typescript
+{
+  id: 'portable-power-station',
+  icon: '📦',  // Change this emoji to any icon you prefer
+  name: 'Portable Power Station',
+  // ...
+}
+```
+
+**Common icon suggestions:**
+- Power: ⚡ 🔋 🔌
+- Portable/Package: 📦 🎒
+- Lighting: 💡 ☀️
+- Protection: 🛡️ 🌩️
+- General: 📡 ⚙️
+
+### Customizing Section Order (Advanced)
+
+Each product card displays sections: Description, Authorized Brands, and Specifications.
+
+To customize the section order per product, add a `sectionOrder` property:
+
+**Files involved:**
+- `src/app/models/company-data.model.ts` — Defines the `sectionOrder` property
+- `src/app/services/company-data.service.ts` — Product data
+- `src/app/components/products/products.ts` — Component logic
+- `src/app/components/products/products.html` — Template rendering
+
+**Example - Custom section order:**
+```typescript
+{
+  id: 'ips-power',
+  name: 'Instant Power Supply (IPS)',
+  sectionOrder: ['specs', 'brands', 'description'],  // Specs show first
+  // ...
+}
+```
+
+If `sectionOrder` is not specified, the default order is: `['description', 'brands', 'specs']`
+
 # deploy
