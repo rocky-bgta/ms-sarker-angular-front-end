@@ -38,7 +38,7 @@ export class CompanyDataService {
       {
         id: 'ips-power',
         category: 'Power Backup Solutions',
-        icon: '⚡',
+        icon: '🔋',
         name: 'Instant Power Supply (IPS)',
         description:
           'Reliable DSP Sine wave and Square wave IPS systems for continuous power supply during outages.',
@@ -49,7 +49,7 @@ export class CompanyDataService {
       {
         id: 'portable-power-station',
         category: 'Power Backup Solutions',
-        icon: '🔋',
+        icon: '🔌',
         name: 'Portable Power Station',
         description:
           'Versatile and portable power solutions for outdoor, emergency, and off-grid use.',
@@ -64,7 +64,7 @@ export class CompanyDataService {
       {
         id: 'ese-lps',
         category: 'Lightning Protection & Earthing',
-        icon: '⚡',
+        icon: '🌩️',
         name: 'ESE Lightning Protection System',
         description:
           'Advanced Early Streamer Emission (ESE) air terminals offering a larger radius of protection compared to traditional rods, ideal for large campuses and factories.',
@@ -134,7 +134,7 @@ export class CompanyDataService {
       {
         id: 'solar-inverter',
         category: 'Renewable Energy & Lighting',
-        icon: '🔋',
+        icon: '🔃',
         name: 'Solar Hybrid Inverters',
         description: 'Solar Inverters with UPS mode supporting multiple battery types.',
         brands: [
