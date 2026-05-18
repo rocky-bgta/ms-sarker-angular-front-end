@@ -36,6 +36,32 @@ export class CompanyDataService {
 
     products: [
       {
+        id: 'ips-power',
+        category: 'Power Backup Solutions',
+        icon: '⚡',
+        name: 'Instant Power Supply (IPS)',
+        description:
+          'Reliable DSP Sine wave and Square wave IPS systems for continuous power supply during outages.',
+        brands: ['Authorized IPS Brands'],
+        specs: ['400VA to 3KV (IPS)', 'DSP Sine wave', 'Square wave'],
+        tags: ['IPS', 'Power Backup', 'Inverter'],
+      },
+      {
+        id: 'portable-power-station',
+        category: 'Power Backup Solutions',
+        icon: '🔋',
+        name: 'Portable Power Station',
+        description:
+          'Versatile and portable power solutions for outdoor, emergency, and off-grid use.',
+        brands: ['LiFePO4 System'],
+        specs: [
+          'Power Range: 300watt to 1200watt',
+          'LiFePO4 Battery',
+          '12volt System',
+        ],
+        tags: ['Portable Power', 'LiFePO4', 'Battery'],
+      },
+      {
         id: 'ese-lps',
         category: 'Lightning Protection & Earthing',
         icon: '⚡',
