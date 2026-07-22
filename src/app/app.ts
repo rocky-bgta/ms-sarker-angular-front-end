@@ -1,11 +1,12 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
+import { AiChatComponent } from './components/ai-chat/ai-chat';
 import { CompanyDataService } from './services/company-data.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent, AiChatComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
