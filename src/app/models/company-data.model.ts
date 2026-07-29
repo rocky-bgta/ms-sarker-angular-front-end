@@ -24,6 +24,8 @@ export interface Product {
   id: string;
   category: string;
   icon: string;
+  imageUrl?: string;
+  imageSourceUrl?: string;
   name: string;
   description: string;
   brands: string[];
@@ -51,6 +53,12 @@ export interface TargetMarket {
   desc: string;
 }
 
+export interface Client {
+  name: string;
+  website: string;
+  logoUrl: string;
+}
+
 export interface Advantage {
   icon: string;
   title: string;
@@ -62,7 +70,7 @@ export interface CompanyData {
   stats: Stat[];
   products: Product[];
   projects: Project[];
-  clients: string[];
+  clients: Client[];
   targetMarkets: TargetMarket[];
   certifications: string[];
   advantages: Advantage[];

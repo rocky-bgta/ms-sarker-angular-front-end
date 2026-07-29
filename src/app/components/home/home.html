@@ -1,120 +1,90 @@
-<!-- HERO -->
-<section class="hero-section d-flex align-items-center position-relative overflow-hidden"
-         style="min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#161b22 60%,#1a1f2e 100%);">
-  <div class="hero-grid-overlay position-absolute" style="inset:0;"></div>
+<section class="hero-section d-flex align-items-center position-relative overflow-hidden">
+  <div class="hero-grid-overlay"></div>
 
-  <!-- Glow orbs -->
-  <div class="position-absolute rounded-circle"
-       style="width:500px;height:500px;top:0;right:0;background:radial-gradient(circle,#f5a623,transparent);filter:blur(100px);opacity:0.08;transform:translate(30%,-30%);pointer-events:none;"></div>
-  <div class="position-absolute rounded-circle"
-       style="width:350px;height:350px;bottom:0;left:0;background:radial-gradient(circle,#e8303a,transparent);filter:blur(80px);opacity:0.07;transform:translate(-30%,30%);pointer-events:none;"></div>
-
-  <div class="container-xl position-relative py-5" style="z-index:2;">
+  <div class="container-xl position-relative py-5">
     <div class="row align-items-center g-5">
-
-      <!-- LEFT: Text content -->
       <div class="col-lg-6 text-center text-lg-start animate__animated animate__fadeInLeft">
-
-        <!-- ✅ FIXED BADGE -->
-        <span class="d-inline-block px-3 py-2 mb-4 rounded-pill fw-semibold"
-              style="background:rgba(245,166,35,0.12);color:#f5a623;border:1px solid rgba(245,166,35,0.3);font-size:0.72rem;letter-spacing:3px;">
-          ⚡ EST. {{ d.company.founded }} &nbsp;·&nbsp; DHAKA, BANGLADESH
+        <span class="eyebrow hero-eyebrow">
+          <i class="bi bi-lightning-charge-fill"></i>
+          Est. {{ d.company.founded }} in {{ d.company.location }}
         </span>
 
-        <h1 class="display-1 fw-bold text-white mb-0 hero-title"
-            style="font-family:'Oswald',sans-serif;letter-spacing:6px;line-height:0.95;">
-          M/S <span style="color:#f5a623;">SARKER</span>
-        </h1>
+        <h1 class="display-1 hero-title">M/S <span>SARKER</span></h1>
 
-        <p class="lead text-secondary mt-3 mb-2" style="letter-spacing:2px;">{{ d.company.tagline }}</p>
-        <p class="mb-5" style="color:#f5a623;letter-spacing:3px;font-size:0.85rem;">{{ d.company.slogan }}</p>
+        <p class="hero-lead">{{ d.company.tagline }}</p>
+        <p class="hero-sublead">{{ d.company.slogan }}</p>
 
         <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
-          <button class="btn btn-warning btn-lg px-5 fw-bold" routerLink="/products">
-            <i class="bi bi-lightning-fill me-2"></i>Explore Products
+          <button class="btn btn-warning btn-lg px-5" routerLink="/products">
+            <i class="bi bi-box-seam me-2"></i>Explore Products
           </button>
           <button class="btn btn-outline-light btn-lg px-5" routerLink="/contact">
-            <i class="bi bi-envelope me-2"></i>Get In Touch
+            <i class="bi bi-send me-2"></i>Get In Touch
           </button>
         </div>
 
-        <!-- Quick contact strip -->
-        <div class="d-flex gap-4 mt-4 justify-content-center justify-content-lg-start flex-wrap">
-          <a href="tel:{{ d.company.phone1 }}" class="text-decoration-none d-flex align-items-center gap-2"
-             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
-            <i class="bi bi-telephone-fill" style="color:#f5a623;"></i>{{ d.company.phone1 }}
+        <div class="hero-contact d-flex gap-3 mt-4 justify-content-center justify-content-lg-start flex-wrap">
+          <a [href]="'tel:' + d.company.phone1" class="hero-contact-link">
+            <i class="bi bi-telephone-fill"></i>{{ d.company.phone1 }}
           </a>
-          <a href="mailto:{{ d.company.email }}" class="text-decoration-none d-flex align-items-center gap-2"
-             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
-            <i class="bi bi-envelope-fill" style="color:#f5a623;"></i>{{ d.company.email }}
+          <a [href]="'mailto:' + d.company.email" class="hero-contact-link">
+            <i class="bi bi-envelope-fill"></i>{{ d.company.email }}
           </a>
-          <a *ngIf="d.company.facebook" [href]="d.company.facebook" target="_blank" class="text-decoration-none d-flex align-items-center gap-2"
-             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
-            <i class="bi bi-facebook" style="color:#f5a623;"></i>Facebook
+          <a *ngIf="d.company.facebook" [href]="d.company.facebook" target="_blank" rel="noopener noreferrer" class="hero-contact-link">
+            <i class="bi bi-facebook"></i>Facebook
           </a>
-          <a *ngIf="d.company.youtube" [href]="d.company.youtube" target="_blank" class="text-decoration-none d-flex align-items-center gap-2"
-             style="color:rgba(255,255,255,0.5);font-size:0.85rem;">
-            <i class="bi bi-youtube" style="color:#f5a623;"></i>YouTube
+          <a *ngIf="d.company.youtube" [href]="d.company.youtube" target="_blank" rel="noopener noreferrer" class="hero-contact-link">
+            <i class="bi bi-youtube"></i>YouTube
           </a>
         </div>
       </div>
 
-      <!-- RIGHT: Visual info panel -->
       <div class="col-lg-6 animate__animated animate__fadeInRight">
-        <div class="position-relative">
-
-          <!-- Main feature panel -->
-          <div class="rounded-4 p-4 p-lg-5"
-               style="background:rgba(255,255,255,0.04);border:1px solid rgba(245,166,35,0.2);backdrop-filter:blur(10px);">
-
-            <div class="d-flex align-items-center gap-3 mb-4">
-              <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-                   style="width:48px;height:48px;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.3);">
-                <i class="bi bi-lightning-charge-fill" style="color:#f5a623;font-size:1.3rem;"></i>
-              </div>
-              <div>
-                <div class="fw-bold text-white" style="font-family:'Oswald',sans-serif;font-size:1.1rem;letter-spacing:1px;">TOTAL SAFETY &amp; ENERGY</div>
-                <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;letter-spacing:1px;">SINCE {{ d.company.founded }} · BANGLADESH</div>
-              </div>
+        <div class="hero-panel professional-card">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="icon-frame">
+              <i class="bi bi-shield-check"></i>
             </div>
-
-            <!-- 4 service tiles -->
-            <div class="row g-3 mb-4">
-              <div class="col-6" *ngFor="let c of [
-                {icon:'bi-lightning-fill',     label:'Lightning Protection', sub:'ESE · 107m Radius',   color:'#f5a623'},
-                {icon:'bi-sun-fill',           label:'Solar Energy',         sub:'4KW – 100KW+ Systems', color:'#f5a623'},
-                {icon:'bi-shield-fill-check',  label:'Surge Protection',     sub:'SPD · AC & DC',       color:'#f5a623'},
-                {icon:'bi-wifi',               label:'IoT Monitoring',       sub:'Real-time · GPS',     color:'#25d366'}
-              ]">
-                <div class="rounded-3 p-3 text-center h-100 service-tile"
-                     style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all .25s;">
-                  <i class="bi {{ c.icon }} mb-2 d-block" [style.color]="c.color" style="font-size:1.6rem;"></i>
-                  <div class="fw-bold text-white mb-1" style="font-size:0.85rem;">{{ c.label }}</div>
-                  <div style="color:rgba(255,255,255,0.4);font-size:0.72rem;">{{ c.sub }}</div>
-                </div>
-              </div>
+            <div>
+              <div class="hero-panel-title">Total Safety &amp; Energy</div>
+              <div class="meta-label">Certified installation partner</div>
             </div>
+          </div>
 
-            <!-- Certifications row -->
-            <div class="border-top pt-3" style="border-color:rgba(255,255,255,0.08)!important;">
-              <div style="color:rgba(255,255,255,0.35);font-size:0.68rem;letter-spacing:2px;margin-bottom:10px;">CERTIFIED &amp; AUTHORIZED</div>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="px-2 py-1 rounded" *ngFor="let cert of ['LPS France','IEC 62305','NFC-17-102','BNBC','NFPA']"
-                      style="background:rgba(245,166,35,0.1);color:#f5a623;font-size:0.7rem;font-weight:600;border:1px solid rgba(245,166,35,0.2);">{{ cert }}</span>
+          <div class="row g-3 mb-4">
+            <div class="col-6" *ngFor="let c of [
+              {icon:'bi-lightning-fill', label:'Lightning Protection', sub:'ESE protection up to 107m'},
+              {icon:'bi-sun-fill', label:'Solar Energy', sub:'4KW to 100KW+ systems'},
+              {icon:'bi-shield-fill-check', label:'Surge Protection', sub:'AC and DC SPD supply'},
+              {icon:'bi-broadcast-pin', label:'IoT Monitoring', sub:'Strike data and GPS status'}
+            ]">
+              <div class="service-tile">
+                <i class="bi {{ c.icon }}"></i>
+                <div class="service-title">{{ c.label }}</div>
+                <div class="service-copy">{{ c.sub }}</div>
               </div>
             </div>
           </div>
 
-          <!-- Floating stat badges -->
-          <div class="position-absolute d-none d-xl-flex flex-column align-items-center justify-content-center rounded-3 shadow-lg"
-               style="top:-20px;right:-20px;width:90px;height:90px;background:#f5a623;z-index:3;">
-            <div style="font-family:'Oswald',sans-serif;font-size:1.8rem;color:#0d1117;font-weight:700;line-height:1;">50+</div>
-            <div style="font-size:0.6rem;color:rgba(13,17,23,0.7);letter-spacing:1px;text-align:center;">PROJECTS</div>
+          <div class="hero-certifications">
+            <div class="meta-label mb-2">Certified &amp; Authorized</div>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="soft-badge px-3" *ngFor="let cert of ['LPS France','IEC 62305','NFC-17-102','BNBC','NFPA']">
+                {{ cert }}
+              </span>
+            </div>
           </div>
 
+          <div class="hero-stats row g-3">
+            <div class="col-6 col-md-3" *ngFor="let stat of d.stats">
+              <div class="hero-stat">
+                <strong>{{ stat.value }}</strong>
+                <span>{{ stat.label }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>

@@ -1,3 +1,7 @@
+.app-shell {
+  padding-top: 72px;
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
@@ -6,20 +10,22 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: #25D366;
+  background: #22c55e;
   color: white;
   text-decoration: none;
   padding: 10px 18px 10px 12px;
   border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  font-family: sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .whatsapp-float:hover {
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: white;
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.35);
   transform: translateY(-2px);
 }
 
@@ -31,4 +37,16 @@
 
 .whatsapp-label {
   white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px;
+  }
+
+  .whatsapp-label {
+    display: none;
+  }
 }

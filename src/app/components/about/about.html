@@ -1,27 +1,32 @@
-<section class="page-hero-bs py-5">
+<section class="page-hero-bs">
   <div class="container-xl position-relative" style="z-index:2;">
-    <h1 class="display-4 fw-bold text-white mb-2" style="font-family:'Oswald',sans-serif;letter-spacing:2px;">ABOUT <span class="text-warning">M/S SARKER</span></h1>
-    <p class="text-secondary mb-0" style="letter-spacing:1px;">Delivering world-class electrical safety and energy solutions since {{ d.company.founded }}.</p>
+    <span class="eyebrow"><i class="bi bi-buildings"></i>Company Profile</span>
+    <h1 class="display-4 section-title">About <span class="text-warning">M/S SARKER</span></h1>
+    <p class="section-lead">Delivering electrical safety and renewable energy solutions since {{ d.company.founded }}.</p>
   </div>
 </section>
 
-<div class="container-xl py-5">
+<div class="container-xl section-shell">
   <div class="row g-5">
     <div class="col-lg-6">
-      <h2 class="h3 text-white mb-4" style="font-family:'Oswald',sans-serif;letter-spacing:1px;">OUR MISSION</h2>
-      <p class="text-secondary mb-5" style="line-height:1.8;">{{ d.company.mission }}</p>
+      <span class="eyebrow"><i class="bi bi-bullseye"></i>Mission</span>
+      <h2 class="h3 section-title">Reliable engineering for safer sites</h2>
+      <p class="text-secondary mb-5 profile-copy">{{ d.company.mission }}</p>
 
-      <h2 class="h3 text-white mb-4" style="font-family:'Oswald',sans-serif;letter-spacing:1px;">OUR VISION</h2>
-      <p class="text-secondary" style="line-height:1.8;">{{ d.company.vision }}</p>
+      <span class="eyebrow"><i class="bi bi-compass"></i>Vision</span>
+      <h2 class="h3 section-title">Smarter protection across Bangladesh</h2>
+      <p class="text-secondary profile-copy">{{ d.company.vision }}</p>
     </div>
     <div class="col-lg-6">
-      <div class="bg-dark p-4 p-lg-5 rounded-4 border border-secondary border-opacity-25 h-100">
-        <h3 class="h4 text-warning mb-4" style="font-family:'Oswald',sans-serif;letter-spacing:1px;">WHY CHOOSE US?</h3>
+      <div class="professional-card p-4 p-lg-5">
+        <h3 class="h4 section-title mb-4">Why Choose Us?</h3>
         <div class="d-flex flex-column gap-4">
           <div class="d-flex gap-3" *ngFor="let adv of d.advantages">
-            <div class="text-warning h3 mb-0">{{ adv.icon }}</div>
+            <div class="icon-frame">
+              <i class="bi" [ngClass]="getAdvantageIcon(adv.title, adv.icon)"></i>
+            </div>
             <div>
-              <div class="text-white fw-bold mb-1" style="font-size:1.1rem;">{{ adv.title }}</div>
+              <div class="text-white fw-bold mb-1">{{ adv.title }}</div>
               <div class="text-secondary small">{{ adv.desc }}</div>
             </div>
           </div>

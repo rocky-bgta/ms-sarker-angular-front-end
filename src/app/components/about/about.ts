@@ -18,4 +18,19 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.d = this.dataService.getData();
   }
+
+  getAdvantageIcon(title: string, icon: string): string {
+    if (icon?.startsWith('bi-')) {
+      return icon;
+    }
+
+    const iconsByTitle: Record<string, string> = {
+      'Tech-Integrated Safety': 'bi-cpu',
+      'One-Stop Solution': 'bi-diagram-3',
+      'Energetic Support': 'bi-headset',
+      'Global Brands': 'bi-globe2',
+    };
+
+    return iconsByTitle[title] || 'bi-check2-circle';
+  }
 }

@@ -1,0 +1,50 @@
+.client-card {
+  min-height: 108px;
+  color: var(--brand-text);
+  text-decoration: none;
+}
+
+.client-logo {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.client-logo img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.client-name {
+  flex: 1;
+  color: var(--brand-text);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.client-link-icon {
+  color: var(--brand-muted);
+  font-size: 0.95rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.client-card:hover .client-link-icon {
+  color: var(--brand-accent);
+  transform: translate(2px, -2px);
+}
+
+.client-ticker-item {
+  color: var(--brand-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  opacity: 0.72;
+}

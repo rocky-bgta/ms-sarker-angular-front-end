@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>M/S SARKER</title>
+  <rect width="64" height="64" rx="14" fill="#0f1216"/>
+  <path d="M14 47V17h8.3l8.7 14 8.7-14H48v30h-8.4V31.1l-6.3 10h-4.6l-6.3-10V47H14Z" fill="#edf0f4"/>
+  <path d="M42.5 7 28 31h10.2L35.7 57 51 28.7H40.8L42.5 7Z" fill="#f6b13d"/>
+  <path d="M12 52h40" stroke="#f6b13d" stroke-width="3" stroke-linecap="round"/>
+</svg>
