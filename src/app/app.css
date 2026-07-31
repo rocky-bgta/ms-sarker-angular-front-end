@@ -1,12 +1,24 @@
 .app-shell {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
   padding-top: 72px;
 }
 
 .single-page-flow {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
   min-height: calc(100vh - 72px);
 }
 
 .public-page-section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
   scroll-margin-top: 72px;
 }
 

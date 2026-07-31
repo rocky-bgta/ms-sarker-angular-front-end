@@ -1,3 +1,8 @@
+.brand-mark {
+  min-width: 0;
+  max-width: calc(100vw - 92px);
+}
+
 .brand-mark span {
   color: var(--brand-accent);
   font-size: 1.38rem;
@@ -14,4 +19,5 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }

@@ -1,4 +1,16 @@
+.about-copy-column {
+  padding-right: 1.5rem;
+  padding-left: 2rem;
+}
+
 .profile-copy {
   max-width: 620px;
   line-height: 1.85;
+}
+
+@media (min-width: 992px) {
+  .about-copy-column {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
 }

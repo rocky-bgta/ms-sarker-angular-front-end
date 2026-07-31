@@ -1,5 +1,9 @@
 .hero-section {
+  width: 100%;
+  max-width: 100%;
   min-height: calc(100vh - 72px);
+  overflow-x: hidden;
+  overflow-x: clip;
   background:
     linear-gradient(135deg, rgba(246, 177, 61, 0.12), transparent 34%),
     linear-gradient(180deg, #151a21 0%, #0f1216 100%);
@@ -43,15 +47,19 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .hero-contact-link {
   display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   gap: 0.45rem;
   color: rgba(237, 240, 244, 0.68);
   font-size: 0.88rem;
   font-weight: 600;
+  overflow-wrap: anywhere;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -66,6 +74,7 @@
 
 .hero-panel {
   position: relative;
+  max-width: 100%;
   padding: 2rem;
 }
 
@@ -165,7 +174,21 @@
     font-size: 3.25rem !important;
   }
 
+  .hero-actions .btn {
+    width: min(100%, 22rem);
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+  }
+
   .hero-eyebrow {
+    justify-content: center;
+  }
+
+  .hero-contact {
+    row-gap: 0.85rem !important;
+  }
+
+  .hero-contact-link {
     justify-content: center;
   }
 
