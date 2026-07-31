@@ -1,0 +1,48 @@
+.projects-table-shell {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-table {
+  min-width: 980px;
+}
+
+.projects-table th,
+.projects-table td {
+  white-space: nowrap;
+}
+
+.projects-table td:nth-child(2) {
+  min-width: 300px;
+}
+
+.projects-table td:nth-child(4) {
+  min-width: 240px;
+}
+
+.projects-table-shell::-webkit-scrollbar {
+  height: 10px;
+}
+
+.projects-table-shell::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.projects-table-shell::-webkit-scrollbar-thumb {
+  border: 2px solid var(--brand-surface);
+  border-radius: 999px;
+  background: rgba(246, 177, 61, 0.45);
+}
+
+@media (max-width: 575.98px) {
+  .projects-table {
+    min-width: 860px;
+  }
+
+  .projects-table th,
+  .projects-table td {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
