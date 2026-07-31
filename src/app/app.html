@@ -1,5 +1,37 @@
 <app-navbar></app-navbar>
-<div id="app" class="app-shell"><router-outlet></router-outlet></div>
+<div id="app" class="app-shell">
+  <div class="route-outlet-frame" [class.route-outlet-hidden]="!isAdminRoute()" [attr.aria-hidden]="!isAdminRoute()">
+    <router-outlet></router-outlet>
+  </div>
+
+  @if (!isAdminRoute()) {
+    <main class="single-page-flow">
+      <section #publicSection class="public-page-section" data-route="/">
+        <app-home></app-home>
+      </section>
+
+      <section #publicSection class="public-page-section" data-route="/about">
+        <app-about></app-about>
+      </section>
+
+      <section #publicSection class="public-page-section" data-route="/products">
+        <app-products></app-products>
+      </section>
+
+      <section #publicSection class="public-page-section" data-route="/projects">
+        <app-projects></app-projects>
+      </section>
+
+      <section #publicSection class="public-page-section" data-route="/clients">
+        <app-clients></app-clients>
+      </section>
+
+      <section #publicSection class="public-page-section" data-route="/contact">
+        <app-contact></app-contact>
+      </section>
+    </main>
+  }
+</div>
 
 <a class="whatsapp-float" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">

@@ -1,22 +1,45 @@
-import { Component, HostListener, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, HostListener, QueryList, ViewChildren, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+import { AboutComponent } from './components/about/about';
+import { ClientsComponent } from './components/clients/clients';
+import { ContactComponent } from './components/contact/contact';
+import { HomeComponent } from './components/home/home';
 import { NavbarComponent } from './components/navbar/navbar';
+import { ProductsComponent } from './components/products/products';
+import { ProjectsComponent } from './components/projects/projects';
 import { CompanyDataService } from './services/company-data.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    HomeComponent,
+    AboutComponent,
+    ProductsComponent,
+    ProjectsComponent,
+    ClientsComponent,
+    ContactComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements AfterViewInit {
   protected readonly title = signal('ms-sarker');
+  protected readonly isAdminRoute = signal(this.readBrowserRoute() === '/admin');
 
   protected readonly whatsappUrl: string;
 
-  private readonly routeOrder = ['/', '/about', '/products', '/projects', '/clients', '/contact'];
-  private readonly wheelCooldownMs = 750;
-  private lastWheelNavigationAt = 0;
+  private readonly sectionRoutes = ['/', '/about', '/products', '/projects', '/clients', '/contact'];
+  private readonly navbarOffset = 72;
+  private routeSyncFrame = 0;
+  private isScrollingFromRoute = false;
+  private isSyncingRouteFromScroll = false;
+  private scrollReleaseTimer = 0;
+
+  @ViewChildren('publicSection')
+  private readonly publicSections!: QueryList<ElementRef<HTMLElement>>;
 
   constructor(
     companyDataService: CompanyDataService,
@@ -26,64 +49,115 @@ export class App {
     const digits = phone.replace(/\D/g, '');
     const international = digits.startsWith('0') ? '880' + digits.slice(1) : digits;
     this.whatsappUrl = `https://wa.me/${international}`;
+
+    this.syncRouteState(this.readBrowserRoute());
+
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const route = this.syncRouteState(event.urlAfterRedirects);
+
+        if (this.isPublicRoute(route) && !this.isSyncingRouteFromScroll) {
+          this.scrollToSection(route);
+        }
+      });
   }
 
-  @HostListener('window:wheel', ['$event'])
-  protected onWindowWheel(event: WheelEvent): void {
-    if (this.shouldIgnoreWheel(event) || Math.abs(event.deltaY) < 40) {
-      return;
-    }
+  ngAfterViewInit(): void {
+    requestAnimationFrame(() => {
+      const route = this.normalizeRoute(this.router.url === '/' ? this.readBrowserRoute() : this.router.url);
 
-    const direction = event.deltaY > 0 ? 1 : -1;
-
-    if (!this.isAtScrollBoundary(direction)) {
-      return;
-    }
-
-    const currentRouteIndex = this.routeOrder.indexOf(this.currentPublicRoute());
-    const nextRouteIndex = currentRouteIndex + direction;
-
-    if (currentRouteIndex === -1 || nextRouteIndex < 0 || nextRouteIndex >= this.routeOrder.length) {
-      return;
-    }
-
-    event.preventDefault();
-    this.lastWheelNavigationAt = Date.now();
-
-    void this.router.navigateByUrl(this.routeOrder[nextRouteIndex]).then((navigated) => {
-      if (navigated) {
-        requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+      if (this.isPublicRoute(route)) {
+        this.scrollToSection(route);
       }
     });
   }
 
-  private shouldIgnoreWheel(event: WheelEvent): boolean {
-    if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
-      return true;
+  @HostListener('window:scroll')
+  protected onWindowScroll(): void {
+    if (this.isAdminRoute() || this.isScrollingFromRoute || this.routeSyncFrame) {
+      return;
     }
 
-    if (Date.now() - this.lastWheelNavigationAt < this.wheelCooldownMs) {
-      return true;
+    this.routeSyncFrame = requestAnimationFrame(() => {
+      this.routeSyncFrame = 0;
+      this.syncRouteFromScroll();
+    });
+  }
+
+  private syncRouteState(url: string): string {
+    const route = this.normalizeRoute(url);
+    this.isAdminRoute.set(route === '/admin');
+
+    return route;
+  }
+
+  private syncRouteFromScroll(): void {
+    const route = this.findCurrentScrollRoute();
+
+    if (!route || route === this.normalizeRoute(this.router.url)) {
+      return;
     }
 
-    const target = event.target;
+    this.isSyncingRouteFromScroll = true;
 
-    return target instanceof Element && Boolean(target.closest('input, select, textarea, [contenteditable="true"]'));
+    void this.router.navigateByUrl(route, { replaceUrl: true }).finally(() => {
+      this.isSyncingRouteFromScroll = false;
+    });
   }
 
-  private isAtScrollBoundary(direction: number): boolean {
-    const scrollTop = window.scrollY;
-    const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    const threshold = 8;
+  private findCurrentScrollRoute(): string | null {
+    const sections = this.publicSections?.toArray() ?? [];
+    const scrollPoint = window.scrollY + this.navbarOffset + 24;
+    let currentRoute: string | null = null;
 
-    return direction > 0
-      ? scrollTop >= maxScrollTop - threshold
-      : scrollTop <= threshold;
+    for (const section of sections) {
+      if (section.nativeElement.offsetTop <= scrollPoint) {
+        currentRoute = section.nativeElement.dataset['route'] ?? null;
+      }
+    }
+
+    return currentRoute;
   }
 
-  private currentPublicRoute(): string {
-    const [path] = this.router.url.split(/[?#]/);
+  private scrollToSection(route: string): void {
+    const section = this.publicSections
+      ?.toArray()
+      .find((item) => item.nativeElement.dataset['route'] === route);
 
-    return path === '' ? '/' : path;
+    if (!section) {
+      return;
+    }
+
+    window.clearTimeout(this.scrollReleaseTimer);
+    this.isScrollingFromRoute = true;
+
+    window.scrollTo({
+      top: Math.max(0, section.nativeElement.offsetTop - this.navbarOffset),
+      left: 0,
+      behavior: 'smooth',
+    });
+
+    this.scrollReleaseTimer = window.setTimeout(() => {
+      this.isScrollingFromRoute = false;
+      this.syncRouteFromScroll();
+    }, 900);
+  }
+
+  private normalizeRoute(url: string): string {
+    const [path] = url.split(/[?#]/);
+    const route = path === '' ? '/' : path;
+
+    return route.endsWith('/') && route !== '/' ? route.slice(0, -1) : route;
+  }
+
+  private isPublicRoute(route: string): boolean {
+    return this.sectionRoutes.includes(route);
+  }
+
+  private readBrowserRoute(): string {
+    const hashPath = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : '';
+
+    return this.normalizeRoute(hashPath || window.location.pathname);
   }
 }
