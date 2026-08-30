@@ -115,3 +115,174 @@
   font-size: 0.9rem;
   line-height: 1.65;
 }
+
+/* ── Expand button on card ── */
+.lightbox-btn {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.82rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.product-media:hover .lightbox-btn {
+  opacity: 1;
+}
+
+/* ── Lightbox overlay ── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.96);
+  display: flex;
+  flex-direction: column;
+  animation: lb-fade-in 0.2s ease;
+}
+
+@keyframes lb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Close button */
+.lb-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10001;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.lb-close:hover { background: rgba(255,255,255,0.22); }
+
+/* Arrow buttons */
+.lb-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10001;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.lb-arrow:hover { background: rgba(255,255,255,0.24); }
+.lb-prev { left: 14px; }
+.lb-next { right: 14px; }
+
+/* Image area — takes all available height */
+.lb-image-wrap {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 80px 0;
+}
+
+/* Framed border around the image */
+.lb-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: calc(100vw - 200px);
+  max-height: calc(100vh - 130px);
+  border: 2px solid rgba(246, 177, 61, 0.5);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 24px 60px rgba(0,0,0,0.6);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.lb-frame.zoomed   { cursor: grab; }
+.lb-frame.dragging { cursor: grabbing; }
+
+.lb-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+  user-select: none;
+  pointer-events: none;
+  display: block;
+  padding: 12px;
+}
+
+/* Footer */
+.lb-footer {
+  padding: 14px 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.lb-dots {
+  display: flex;
+  gap: 8px;
+}
+.lb-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lb-dots span.active {
+  background: var(--brand-accent);
+  border-color: var(--brand-accent);
+  transform: scale(1.3);
+}
+.lb-dots span:hover:not(.active) { background: rgba(255,255,255,0.75); }
+
+.lb-hint {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.76rem;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .lb-image-wrap { padding: 44px 56px 0; }
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
+}

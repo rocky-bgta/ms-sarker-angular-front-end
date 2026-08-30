@@ -10,7 +10,7 @@
   <div class="row g-4">
     <div class="col-md-6 col-lg-4" *ngFor="let p of products">
       <div class="card product-card professional-card card-hover overflow-hidden">
-        <div class="product-media" [class.is-gallery]="hasGallery(p)" (click)="cycleImage(p)">
+        <div class="product-media" [class.is-gallery]="hasGallery(p)" (click)="cycleImage(p, $event)">
           <img
             [src]="getCurrentImage(p)"
             [alt]="p.name"
@@ -19,6 +19,12 @@
           <span class="product-media-fallback">
             <i class="bi" [ngClass]="getProductIcon(p)"></i>
           </span>
+
+          <!-- zoom / expand button -->
+          <button class="lightbox-btn" (click)="openLightbox(p, $event)" title="View full size">
+            <i class="bi bi-arrows-fullscreen"></i>
+          </button>
+
           <div class="gallery-hint" *ngIf="hasGallery(p)">
             <i class="bi bi-images"></i>
           </div>
@@ -61,6 +67,56 @@
           </ng-container>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Lightbox ───────────────────────────────────────────────── -->
+<div class="lightbox-overlay" *ngIf="lightboxOpen"
+     (mousemove)="onMouseMove($event)"
+     (mouseup)="onMouseUp()"
+     (mouseleave)="onMouseUp()">
+
+  <!-- Close -->
+  <button class="lb-close" (click)="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+
+  <!-- Prev -->
+  <button class="lb-arrow lb-prev" (click)="lightboxPrev()" *ngIf="lightboxImages.length > 1">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+
+  <!-- Image -->
+  <div class="lb-image-wrap">
+    <div class="lb-frame"
+         [class.zoomed]="zoomLevel > 1"
+         [class.dragging]="isDragging && hasMoved"
+         (mousedown)="onMouseDown($event)"
+         (touchstart)="onTouchStart($event)"
+         (touchmove)="onTouchMove($event)"
+         (touchend)="onTouchEnd()">
+      <img
+        [src]="lightboxImages[lightboxIndex]"
+        alt="Product image"
+        [style.transform]="imageTransform"
+        class="lb-image"
+        draggable="false">
+    </div>
+  </div>
+
+  <!-- Next -->
+  <button class="lb-arrow lb-next" (click)="lightboxNext()" *ngIf="lightboxImages.length > 1">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+
+  <!-- Footer -->
+  <div class="lb-footer">
+    <div class="lb-dots" *ngIf="lightboxImages.length > 1">
+      <span *ngFor="let i of getLightboxDots()" [class.active]="lightboxIndex === i" (click)="jumpLightbox(i)"></span>
+    </div>
+    <div class="lb-hint">
+      <i class="bi bi-zoom-in"></i> {{ zoomLevel === 1 ? 'Click image to zoom in · Drag to pan when zoomed' : 'Drag to pan · Click image to zoom out' }}
+      &nbsp;·&nbsp; <i class="bi bi-arrow-left-right"></i> Arrow keys to navigate
+      &nbsp;·&nbsp; <i class="bi bi-x-circle"></i> Esc to close
     </div>
   </div>
 </div>
