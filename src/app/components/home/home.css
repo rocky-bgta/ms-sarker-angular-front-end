@@ -34,7 +34,7 @@
 
 .hero-lead {
   max-width: 580px;
-  margin: 1.35rem auto 0.5rem;
+  margin: 1.35rem auto 2rem;
   color: var(--brand-muted);
   font-size: 1.22rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);

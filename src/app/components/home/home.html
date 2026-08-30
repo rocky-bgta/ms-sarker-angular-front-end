@@ -12,7 +12,7 @@
         <h1 class="display-1 hero-title">M/S <span>SARKER</span></h1>
 
         <p class="hero-lead">{{ d.company.tagline }}</p>
-        <p class="hero-sublead">{{ d.company.slogan }}</p>
+        <p class="hero-sublead" *ngIf="d.company.slogan">{{ d.company.slogan }}</p>
 
         <div class="hero-actions d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
           <button class="btn btn-warning btn-lg px-5" routerLink="/products">
