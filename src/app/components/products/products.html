@@ -10,15 +10,21 @@
   <div class="row g-4">
     <div class="col-md-6 col-lg-4" *ngFor="let p of products">
       <div class="card product-card professional-card card-hover overflow-hidden">
-        <div class="product-media">
+        <div class="product-media" [class.is-gallery]="hasGallery(p)" (click)="cycleImage(p)">
           <img
-            [src]="getProductImage(p)"
+            [src]="getCurrentImage(p)"
             [alt]="p.name"
             loading="lazy"
             (error)="handleProductImageError($event)">
           <span class="product-media-fallback">
             <i class="bi" [ngClass]="getProductIcon(p)"></i>
           </span>
+          <div class="gallery-hint" *ngIf="hasGallery(p)">
+            <i class="bi bi-images"></i>
+          </div>
+          <div class="gallery-dots" *ngIf="hasGallery(p)">
+            <span *ngFor="let i of getImageDots(p)" [class.active]="imageIndexMap[p.id] === i"></span>
+          </div>
         </div>
         <div class="card-body p-4">
           <div class="d-flex align-items-center gap-3 mb-4">

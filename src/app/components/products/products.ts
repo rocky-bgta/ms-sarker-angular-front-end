@@ -13,11 +13,34 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   defaultSectionOrder: ('description' | 'brands' | 'specs')[] = ['description', 'brands', 'specs'];
+  imageIndexMap: Record<string, number> = {};
 
   constructor(private dataService: CompanyDataService) {}
 
   ngOnInit(): void {
     this.products = this.dataService.getData().products;
+    this.products.forEach(p => { this.imageIndexMap[p.id] = 0; });
+  }
+
+  hasGallery(product: Product): boolean {
+    return !!product.images && product.images.length > 1;
+  }
+
+  getCurrentImage(product: Product): string {
+    if (product.images && product.images.length > 0) {
+      return product.images[this.imageIndexMap[product.id] ?? 0];
+    }
+    return this.getProductImage(product);
+  }
+
+  cycleImage(product: Product): void {
+    if (!this.hasGallery(product)) return;
+    const total = product.images!.length;
+    this.imageIndexMap[product.id] = (this.imageIndexMap[product.id] + 1) % total;
+  }
+
+  getImageDots(product: Product): number[] {
+    return product.images ? product.images.map((_, i) => i) : [];
   }
 
   getSectionOrder(product: Product): ('description' | 'brands' | 'specs')[] {

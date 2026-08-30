@@ -16,6 +16,10 @@ export class ProjectsComponent implements OnInit {
   constructor(private dataService: CompanyDataService) {}
 
   ngOnInit(): void {
-    this.projects = this.dataService.getData().projects;
+    this.projects = this.dataService.getData().projects.slice().sort((a, b) => {
+      const yearA = parseInt(a.year.split('–')[0], 10);
+      const yearB = parseInt(b.year.split('–')[0], 10);
+      return yearA - yearB;
+    });
   }
 }

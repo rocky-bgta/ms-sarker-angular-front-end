@@ -2,6 +2,52 @@
   color: var(--brand-text);
 }
 
+.product-media.is-gallery {
+  cursor: pointer;
+}
+
+.product-media.is-gallery:hover img {
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
+.gallery-hint {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  pointer-events: none;
+}
+
+.gallery-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.gallery-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: background 0.2s ease;
+}
+
+.gallery-dots span.active {
+  background: var(--brand-accent);
+}
+
 .product-media {
   position: relative;
   height: 190px;

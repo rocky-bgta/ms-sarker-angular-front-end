@@ -25,6 +25,7 @@ export interface Product {
   category: string;
   icon: string;
   imageUrl?: string;
+  images?: string[];
   imageSourceUrl?: string;
   name: string;
   description: string;

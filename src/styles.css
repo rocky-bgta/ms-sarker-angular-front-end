@@ -11,9 +11,9 @@
   --brand-surface-strong: #1d242d;
   --brand-border: rgba(255, 255, 255, 0.1);
   --brand-border-strong: rgba(246, 177, 61, 0.32);
-  --brand-text: #edf0f4;
-  --brand-muted: #a5afbc;
-  --brand-faint: #738091;
+  --brand-text: #ffffff;
+  --brand-muted: #cdd5e0;
+  --brand-faint: #a2b0c0;
   --brand-accent: #f6b13d;
   --brand-success: #2cc978;
   --brand-info: #56b6f7;
@@ -39,8 +39,9 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    linear-gradient(180deg, rgba(246, 177, 61, 0.05), transparent 360px),
-    var(--brand-bg);
+    linear-gradient(180deg, rgba(246, 177, 61, 0.04), transparent 400px),
+    linear-gradient(180deg, rgba(8, 11, 16, 0.87) 0%, rgba(8, 11, 16, 0.87) 100%),
+    url('/images/company/ms-sarker-banner.png') center center / cover fixed;
   color: var(--brand-text);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
@@ -139,10 +140,10 @@ a {
   position: relative;
   overflow: hidden;
   padding: 76px 0 54px;
-  border-bottom: 1px solid var(--brand-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(135deg, rgba(246, 177, 61, 0.09), transparent 36%),
-    linear-gradient(180deg, #141922 0%, #101318 100%);
+    linear-gradient(135deg, rgba(246, 177, 61, 0.14), transparent 40%),
+    rgba(0, 0, 0, 0.55);
 }
 
 .page-hero-bs::before {
@@ -167,6 +168,7 @@ a {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
 .section-title {
@@ -176,6 +178,7 @@ a {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.05;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .section-lead {
@@ -183,14 +186,16 @@ a {
   margin: 0;
   color: var(--brand-muted);
   font-size: 1rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
 .professional-card {
   height: 100%;
-  border: 1px solid var(--brand-border);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
 }
 
 .card-hover {
@@ -241,16 +246,17 @@ a {
 
 .table-shell {
   overflow: hidden;
-  border: 1px solid var(--brand-border);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  background: var(--brand-surface);
-  box-shadow: var(--brand-shadow);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
 }
 
 .table-dark {
-  --bs-table-bg: var(--brand-surface);
-  --bs-table-striped-bg: var(--brand-surface-strong);
-  --bs-table-hover-bg: rgba(246, 177, 61, 0.06);
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.04);
+  --bs-table-hover-bg: rgba(246, 177, 61, 0.08);
   border-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -287,15 +293,16 @@ a {
 
 .form-control.bg-dark,
 .form-select.bg-dark {
-  border-color: var(--brand-border) !important;
-  background-color: #12171e !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
   color: var(--brand-text) !important;
+  backdrop-filter: blur(4px);
 }
 
 .form-control.bg-dark:focus,
 .form-select.bg-dark:focus {
   border-color: rgba(246, 177, 61, 0.58) !important;
-  background-color: #151b23 !important;
+  background-color: rgba(255, 255, 255, 0.10) !important;
   box-shadow: 0 0 0 4px rgba(246, 177, 61, 0.12) !important;
 }
 
