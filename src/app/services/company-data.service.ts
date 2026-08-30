@@ -273,6 +273,31 @@ export class CompanyDataService {
         tags: ['Street Light', 'Solar', 'Motion Sensor', 'AC'],
       },
       {
+        id: 'solar-irrigation',
+        category: 'Renewable Energy & Water',
+        icon: 'bi-droplet-half',
+        imageUrl: '/images/products/solar-irrigation-system.png',
+        images: ['/images/products/solar-irrigation-system.png'],
+        imageSourceUrl: '',
+        name: 'Solar Irrigation System',
+        description:
+          'A solar irrigation system uses photovoltaic panels to generate electricity that powers water pumps, delivering water from wells, rivers, or reservoirs to crops without diesel or grid electricity. It typically includes solar panels, a pump (surface or submersible), a controller, optional batteries, and an irrigation network such as drip or sprinklers.',
+        brands: ['Willo (Germany)', 'LEO (China)', 'Sterling (India)'],
+        specs: [
+          'Solar panels – Generate DC electricity',
+          'Pump (DC or AC) – Surface or submersible pump',
+          'Irrigation network – Drip lines, sprinklers, or pivots',
+          'Storage tank/reservoir – Stores water pumped during sunny hours',
+          'Submersible Pump, VPD',
+        ],
+        sectionOrder: ['description', 'brands', 'specs'] as (
+          | 'description'
+          | 'brands'
+          | 'specs'
+        )[],
+        tags: ['Solar', 'Irrigation', 'Water Pump', 'Agriculture'],
+      },
+      {
         id: 'spd',
         category: 'Circuit Protection & Safety',
         icon: 'bi-shield-check',
