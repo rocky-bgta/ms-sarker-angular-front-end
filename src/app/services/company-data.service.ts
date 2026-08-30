@@ -187,8 +187,10 @@ export class CompanyDataService {
         id: 'solar-systems',
         category: 'Renewable Energy & Lighting',
         icon: 'bi-sun',
-        imageUrl: '/images/products/solar-panel-jinko-720w.png',
+        imageUrl: '/images/products/solar-panel-ja-630w.jpeg',
         images: [
+          '/images/products/solar-panel-ja-630w.jpeg',
+          '/images/products/solar-panel-ja-datasheet1.jpeg',
           '/images/products/solar-panel-jinko-720w.png',
           '/images/products/solar-panel-jinko-datasheet.png',
           '/images/products/solar-panel-jinko-specs.png',
