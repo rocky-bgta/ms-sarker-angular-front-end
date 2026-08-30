@@ -1,133 +1,297 @@
-# M/S SARKER — Angular Conversion
+# M/S SARKER — Angular Website
 
-This project has been converted from a static HTML/JS application to a modern **Angular** project using **TypeScript** and **Best Practices**.
+Angular 21 standalone-component website for M/S SARKER, deployed automatically to [mssarker.com](https://mssarker.com/#/) via GitHub Pages.
 
-## ⚡ Quick Start
+---
 
-To start the development server, run:
+## Quick Start
 
 ```bash
-npm start
+npm install
+npm start          # dev server at http://localhost:4200/
+npm run build      # production build → dist/ms-sarker/browser/
 ```
 
-Once the server is running, navigate to `http://localhost:4200/`.
+---
 
-## 🏗️ Project Structure
+## Project Structure
 
-- `src/app/components`: Separate components for each page (Navbar, Home, Products, etc.).
-- `src/app/models`: TypeScript interfaces for data structures.
-- `src/app/services`: Services for data management (`CompanyDataService`).
-- `src/app/app.routes.ts`: Centralized routing configuration.
-- `legacy/`: Contains the original static files for reference.
-
-## 🛠️ Key Improvements
-
-- **Angular Best Practices**: Components use separate HTML/CSS files.
-- **TypeScript**: Full type safety for company data, products, and projects.
-- **Service-Oriented Architecture**: Centralized data management via `CompanyDataService`.
-- **Global Styles**: Centralized CSS in `src/styles.css`.
-- **CORS Resolved**: Running via `npm start` (local dev server) eliminates CORS issues associated with the `file://` protocol.
-
-## 🚀 Deployment
-
-### Option 1: GitHub Pages (Automatic)
-The easiest way to deploy is using the included GitHub Actions workflow.
-
-1.  **Push your code** to GitHub.
-2.  Go to your repository on GitHub.
-3.  Navigate to **Settings** > **Pages**.
-4.  Under **Build and deployment** > **Source**, select **"GitHub Actions"**.
-5.  Your site will automatically build and deploy every time you push to the `main` branch.
-
-### Option 2: Manual Deployment
-If you want to host it elsewhere (Netlify, Vercel, or your own server):
-
-1.  **Build the project**:
-    ```bash
-    npm run build
-    ```
-2.  **Upload the files**:
-    The deployment-ready files are located in `dist/ms-sarker/browser/`.
-3.  **Note**: The project is configured with `withHashLocation()`, so it works perfectly on static hosts without extra configuration.
-
-## 📦 Managing Products (Order & Icons)
-
-### Changing Product Order
-
-To change the order in which products appear on the **Products Page**, edit the `products` array in:
 ```
-src/app/services/company-data.service.ts
+src/
+  app/
+    components/        # one folder per page
+      home/
+      products/
+      projects/
+      about/
+      contact/
+    models/
+      company-data.model.ts   # TypeScript interfaces
+    services/
+      company-data.service.ts # ALL website content lives here
+  styles.css           # global styles & CSS variables
+public/
+  images/
+    company/           # banner, logo
+    products/          # product images & gallery images
 ```
 
-**How it works:**
-- Products display in the same order as they appear in the array
-- The first product in the array appears first on the page
-- Simply rearrange the product objects to change display order
+**Single source of truth:** every piece of text, every image path, and every product/project entry is defined in `src/app/services/company-data.service.ts`. Edit that file to change any website content.
 
-**Example:**
+---
+
+## Deployment
+
+Push to `main` — GitHub Actions builds and deploys automatically.
+
+Manual build for other hosts:
+```bash
+npm run build
+# upload dist/ms-sarker/browser/ to your host
+```
+
+The app uses `withHashLocation()` routing so it works on any static host with no server config.
+
+---
+
+## Managing Products
+
+All product data is in the `products: [...]` array inside `company-data.service.ts`.
+
+### Product object structure
+
+```typescript
+{
+  id: 'solar-systems',              // unique slug, never change after adding
+  category: 'Renewable Energy',     // shown as meta label above the title
+  icon: 'bi-sun',                   // Bootstrap Icon class (see icons section)
+  name: 'Solar PV Systems',         // card title
+  description: 'Complete solar...', // paragraph shown on the card
+  brands: ['JA Solar', 'Jinko'],    // badge list
+  specs: ['720W panel', '...'],     // bullet list with checkmark icons
+  imageUrl: '/images/products/solar-panel-ja-630w.jpeg', // default/fallback image
+  images: [                         // gallery array (optional, enables gallery mode)
+    '/images/products/solar-panel-ja-630w.jpeg',
+    '/images/products/solar-panel-ja-datasheet1.jpeg',
+  ],
+  imageSourceUrl: '',               // optional external link for image credit
+  sectionOrder: ['description', 'brands', 'specs'], // optional, controls card layout
+  tags: ['Solar', 'Bifacial'],      // internal tags, not displayed
+}
+```
+
+---
+
+### Changing product order
+
+Products appear on the page in the exact order they are listed in the `products` array.  
+Move an object up or down in the array to reorder it.
+
 ```typescript
 products: [
-  {
-    id: 'portable-power-station',  // This will appear FIRST
-    name: 'Portable Power Station',
-    // ...
-  },
-  {
-    id: 'ips-power',  // This will appear SECOND
-    name: 'Instant Power Supply (IPS)',
-    // ...
-  },
+  { id: 'solar-systems', ... },   // appears 1st
+  { id: 'solar-inverter', ... },  // appears 2nd
+  { id: 'ese-lps', ... },         // appears 3rd
+  // ...
 ]
 ```
 
-### Changing Product Icons
+---
 
-Each product has an `icon` property using **emoji**. To change or update icons:
+### Updating product text
 
-**File to edit:**
-```
-src/app/services/company-data.service.ts
-```
+Open `src/app/services/company-data.service.ts`, find the product by its `id`, and edit any field:
 
-**Example icon changes:**
 ```typescript
 {
-  id: 'portable-power-station',
-  icon: '📦',  // Change this emoji to any icon you prefer
-  name: 'Portable Power Station',
+  id: 'chemical-earthing',
+  name: 'Chemical Earthing System',           // ← change title here
+  description: 'Maintenance-free...',         // ← change description here
+  brands: ['Wallis (Origin: UK)'],            // ← add/remove brand badges
+  specs: [
+    'Chemical Earth Electrode',               // ← add/remove spec bullets
+    'Low Resistance | Long Life',
+  ],
+}
+```
+
+---
+
+### Updating a single product image
+
+1. Copy the new image into `public/images/products/`.
+2. Update `imageUrl` in the product object:
+
+```typescript
+{
+  id: 'ese-lps',
+  imageUrl: '/images/products/ese-lps-paraton60.png',  // ← new filename here
   // ...
 }
 ```
 
-**Common icon suggestions:**
-- Power: ⚡ 🔋 🔌
-- Portable/Package: 📦 🎒
-- Lighting: 💡 ☀️
-- Protection: 🛡️ 🌩️
-- General: 📡 ⚙️
+The path must start with `/images/` — this maps to the `public/images/` folder.
 
-### Customizing Section Order (Advanced)
+---
 
-Each product card displays sections: Description, Authorized Brands, and Specifications.
+### Setting up an image gallery
 
-To customize the section order per product, add a `sectionOrder` property:
+A gallery is enabled automatically when a product has an `images` array with **more than one entry**.
 
-**Files involved:**
-- `src/app/models/company-data.model.ts` — Defines the `sectionOrder` property
-- `src/app/services/company-data.service.ts` — Product data
-- `src/app/components/products/products.ts` — Component logic
-- `src/app/components/products/products.html` — Template rendering
-
-**Example - Custom section order:**
 ```typescript
 {
-  id: 'ips-power',
-  name: 'Instant Power Supply (IPS)',
-  sectionOrder: ['specs', 'brands', 'description'],  // Specs show first
+  id: 'solar-systems',
+  imageUrl: '/images/products/solar-panel-ja-630w.jpeg', // first image (card default)
+  images: [
+    '/images/products/solar-panel-ja-630w.jpeg',         // shown first on card
+    '/images/products/solar-panel-ja-datasheet1.jpeg',   // shown on click
+    '/images/products/solar-panel-jinko-720w.png',       // shown on next click
+  ],
   // ...
 }
 ```
 
-If `sectionOrder` is not specified, the default order is: `['description', 'brands', 'specs']`
+**How it works on the card:**
+- A photo-stack icon appears in the top-right corner indicating a gallery.
+- Clicking the image cycles to the next photo.
+- Dots at the bottom of the image show current position.
 
-# deploy
+**How to add images to an existing gallery:**
+1. Put the new image file in `public/images/products/`.
+2. Add its path to the `images` array at the desired position.
+
+**To control which image appears first** on the card, put it as the first entry in `images` and also set it as `imageUrl`.
+
+---
+
+### Image gallery lightbox
+
+Clicking the expand button (⛶) on any product card opens a full-screen lightbox.
+
+| Action | Result |
+|--------|--------|
+| Click image | Zoom in (2.5×) |
+| Click again when zoomed | Zoom out |
+| Drag when zoomed | Pan image |
+| Arrow keys ← → | Previous / next image |
+| Click dots at bottom | Jump to image |
+| Esc or × button | Close |
+
+No code changes are needed — the lightbox works automatically for any product that has an `images` array.
+
+---
+
+### Adding a new product
+
+1. Add the image(s) to `public/images/products/`.
+2. Add a new object to the `products` array in `company-data.service.ts`:
+
+```typescript
+{
+  id: 'my-new-product',           // unique, lowercase, hyphen-separated
+  category: 'Category Name',
+  icon: 'bi-box',                 // Bootstrap Icon class
+  name: 'My New Product',
+  description: 'Description text.',
+  brands: ['Brand A', 'Brand B'],
+  specs: ['Spec 1', 'Spec 2'],
+  imageUrl: '/images/products/my-new-product.png',
+  images: [                       // omit this key if no gallery needed
+    '/images/products/my-new-product.png',
+    '/images/products/my-new-product-datasheet.png',
+  ],
+  imageSourceUrl: '',
+  tags: ['tag1'],
+},
+```
+
+3. Place the object at the position in the array where you want it to appear on the page.
+
+---
+
+### Removing a product
+
+Delete the entire `{ ... }` object for that product from the `products` array.
+
+---
+
+### Changing product icons
+
+Icons use [Bootstrap Icons](https://icons.getbootstrap.com/). Find the icon name on that page, then set it on the product:
+
+```typescript
+{ icon: 'bi-lightning-charge' }   // ESE lightning
+{ icon: 'bi-sun' }                // Solar
+{ icon: 'bi-droplet-half' }       // Irrigation
+{ icon: 'bi-shield-check' }       // Protection
+{ icon: 'bi-battery-charging' }   // Power/IPS
+```
+
+---
+
+### Customising section order per card
+
+By default each card shows: Description → Brands → Specs.  
+Add `sectionOrder` to a product to override:
+
+```typescript
+{
+  id: 'ese-lps',
+  sectionOrder: ['specs', 'brands', 'description'],  // Specs shown first
+  // ...
+}
+```
+
+Valid values: `'description'`, `'brands'`, `'specs'`.
+
+---
+
+## Company Info & Branding
+
+Edit the `company` object at the top of `company-data.service.ts`:
+
+```typescript
+company: {
+  name: 'M/S SARKER',
+  tagline: 'Born for Revolution',   // shown under company name on home page
+  slogan: '',                        // secondary line (hidden when empty)
+  founded: '2018',
+  location: 'Dhaka, Bangladesh',
+  phone: '01234-567890',
+  phone2: '01234-567891',
+  email: 'example@gmail.com',
+  // ...
+}
+```
+
+---
+
+## Background Image
+
+The site background image is `public/images/company/ms-sarker-banner.png`.  
+Replace this file with a higher-resolution version (1920px wide recommended) to keep it sharp.  
+The CSS reference is in `src/styles.css`:
+
+```css
+body {
+  background: ..., url('/images/company/ms-sarker-banner.png') center center / cover;
+}
+```
+
+---
+
+## Build & Push Workflow
+
+```bash
+# 1. Make changes in company-data.service.ts or public/images/
+# 2. Verify locally
+npm run build
+
+# 3. Stage, commit, push
+git add src/app/services/company-data.service.ts
+git add public/images/products/new-image.png
+git commit -m "feat(products): add new product"
+git push origin main
+
+# GitHub Actions deploys automatically — live in ~1 minute
+```
