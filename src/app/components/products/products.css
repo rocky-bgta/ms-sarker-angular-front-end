@@ -220,12 +220,9 @@
   height: 100%;
   max-width: calc(100vw - 200px);
   max-height: calc(100vh - 130px);
-  border: 2px solid rgba(246, 177, 61, 0.5);
+  border: none;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.08),
-    0 24px 60px rgba(0,0,0,0.6);
   overflow: hidden;
   cursor: zoom-in;
 }

@@ -147,7 +147,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onMouseUp(): void {
-    if (!this.hasMoved) {
+    if (this.isDragging && !this.hasMoved) {
       this.toggleZoom();
     }
     this.isDragging = false;
