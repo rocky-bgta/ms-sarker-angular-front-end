@@ -225,6 +225,7 @@
   background: transparent;
   overflow: hidden;
   cursor: zoom-in;
+  touch-action: none;
 }
 .lb-frame.zoomed   { cursor: grab; }
 .lb-frame.dragging { cursor: grabbing; }

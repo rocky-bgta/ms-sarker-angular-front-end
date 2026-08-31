@@ -177,7 +177,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onTouchEnd(): void {
-    if (!this.hasMoved) this.toggleZoom();
+    if (this.isDragging && !this.hasMoved) this.toggleZoom();
     this.isDragging = false;
   }
 
