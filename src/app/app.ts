@@ -30,6 +30,7 @@ export class App implements AfterViewInit {
   protected readonly isAdminRoute = signal(this.readBrowserRoute() === '/admin');
 
   protected readonly whatsappUrl: string;
+  protected readonly currentYear = new Date().getFullYear();
 
   private readonly sectionRoutes = ['/', '/about', '/products', '/projects', '/clients', '/contact'];
   private readonly navbarOffset = 72;
