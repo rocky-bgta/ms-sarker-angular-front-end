@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    tags:
-      - 'v*'  # Trigger only on version tags e.g. v1.0.0, v1.2.3
+    branches:
+      - main  # Trigger on pushes to the main branch
 
 permissions:
   contents: read
