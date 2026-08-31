@@ -62,15 +62,14 @@
   border-bottom: 1px solid var(--brand-border);
   background:
     linear-gradient(135deg, rgba(246, 177, 61, 0.08), transparent 52%),
-    #f6f7f9;
+    var(--brand-surface);
 }
 
 .product-media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 1.1rem;
-  mix-blend-mode: multiply;
+  object-fit: fill;
+  padding: 0;
 }
 
 .product-media-fallback {

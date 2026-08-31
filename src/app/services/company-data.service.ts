@@ -149,6 +149,7 @@ export class CompanyDataService {
           'Option: Contact@ir System (IoT communication)',
           'Standard: NFC 17-102, IEC 62305',
         ],
+        imageFit: 'contain' as const,
         tags: ['ESE', 'Lightning Rod', 'Non-IoT', 'IoT Available'],
       },
       {
@@ -182,6 +183,7 @@ export class CompanyDataService {
           'Round Conductor Range: 2×50 mm² to 2×120 mm²',
           'Wind Speed: Up to 150mph (240kph)',
         ],
+        imageFit: 'contain' as const,
         tags: ['ESE', 'PETEX-L', 'FOREND', 'Turkey', 'IP67'],
       },
       {

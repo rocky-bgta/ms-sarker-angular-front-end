@@ -15,6 +15,7 @@
             [src]="getCurrentImage(p)"
             [alt]="p.name"
             loading="lazy"
+            [style.object-fit]="p.imageFit ?? 'fill'"
             (error)="handleProductImageError($event)">
           <span class="product-media-fallback">
             <i class="bi" [ngClass]="getProductIcon(p)"></i>

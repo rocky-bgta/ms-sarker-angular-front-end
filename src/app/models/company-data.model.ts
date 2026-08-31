@@ -33,6 +33,7 @@ export interface Product {
   specs: string[];
   tags: string[];
   sectionOrder?: ('description' | 'brands' | 'specs')[];
+  imageFit?: 'fill' | 'contain' | 'cover';
 }
 
 export interface Project {
