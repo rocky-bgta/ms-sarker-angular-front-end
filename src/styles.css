@@ -41,7 +41,7 @@ body {
   background:
     linear-gradient(180deg, rgba(246, 177, 61, 0.04), transparent 400px),
     linear-gradient(180deg, rgba(8, 11, 16, 0.87) 0%, rgba(8, 11, 16, 0.87) 100%),
-    url('/images/company/ms-sarker-banner.png') center center / cover fixed;
+    url('/images/company/ms-sarker-banner.jpg') center center / cover fixed;
   color: var(--brand-text);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
