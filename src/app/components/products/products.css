@@ -221,8 +221,8 @@
   max-width: calc(100vw - 200px);
   max-height: calc(100vh - 130px);
   border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0;
+  background: transparent;
   overflow: hidden;
   cursor: zoom-in;
 }
