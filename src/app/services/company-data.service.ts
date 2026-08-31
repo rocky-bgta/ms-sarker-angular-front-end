@@ -333,10 +333,8 @@ export class CompanyDataService {
         id: 'ips-power',
         category: 'Power Backup Solutions',
         icon: 'bi-battery-charging',
-        imageUrl:
-          'https://shop.rangs.com.bd/_next/image?q=75&url=https%3A%2F%2Fecom.rangs.com.bd%2Fstorage%2F11054%2F860X740-01.jpg&w=3840',
-        imageSourceUrl:
-          'https://shop.rangs.com.bd/products/rangs-ips-600va-rangs-power-battery-100ah-2-fan-2-light',
+        imageUrl: '/images/products/ips-power.jpeg',
+        imageSourceUrl: '',
         name: 'Instant Power Supply (IPS)',
         description:
           'Reliable DSP Sine wave and Square wave IPS systems for continuous power supply during outages.',
