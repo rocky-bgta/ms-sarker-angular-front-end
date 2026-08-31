@@ -279,7 +279,11 @@
 }
 
 @media (max-width: 767px) {
-  .lb-image-wrap { padding: 44px 56px 0; }
+  .lb-image-wrap { padding: 44px 8px 0; }
+  .lb-frame {
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 140px);
+  }
   .lb-prev { left: 6px; }
   .lb-next { right: 6px; }
 }
