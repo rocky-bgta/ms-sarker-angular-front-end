@@ -349,6 +349,13 @@ footer a:hover {
 }
 
 @media (max-width: 767.98px) {
+  body {
+    background:
+      linear-gradient(180deg, rgba(246, 177, 61, 0.04), transparent 400px),
+      linear-gradient(180deg, rgba(8, 11, 16, 0.87) 0%, rgba(8, 11, 16, 0.87) 100%),
+      url('/images/company/ms-sarker-banner-mobile.png') center center / cover;
+  }
+
   .section-shell {
     padding: 52px 0;
   }
