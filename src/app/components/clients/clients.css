@@ -42,9 +42,23 @@
 }
 
 .client-ticker-item {
-  color: var(--brand-muted);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  opacity: 0.72;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.client-ticker-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.9);
+  padding: 6px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.client-ticker-item img:hover {
+  opacity: 1;
 }

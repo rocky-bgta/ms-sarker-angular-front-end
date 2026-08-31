@@ -26,11 +26,11 @@
 
   <div class="mt-5 ticker-wrap overflow-hidden table-shell py-4">
     <div class="ticker-inner d-flex gap-5 align-items-center">
-      <div *ngFor="let client of clients" class="client-ticker-item text-nowrap px-4">
-        {{ client.name.toUpperCase() }}
+      <div *ngFor="let client of clients" class="client-ticker-item px-3">
+        <img [src]="client.logoUrl" [alt]="client.name + ' logo'" loading="lazy">
       </div>
-      <div *ngFor="let client of clients" class="client-ticker-item text-nowrap px-4">
-        {{ client.name.toUpperCase() }}
+      <div *ngFor="let client of clients" class="client-ticker-item px-3">
+        <img [src]="client.logoUrl" [alt]="client.name + ' logo'" loading="lazy">
       </div>
     </div>
   </div>
